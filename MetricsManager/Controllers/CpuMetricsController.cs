@@ -27,6 +27,23 @@ namespace MetricsManager.Controllers
         {
             _metricsAgentClient = metricsAgentClient;
         }
+
+
+        [HttpGet("getCpuMetricsFromAgent")]
+        [ProducesResponseType(typeof(CpuMetricsResponse), StatusCodes.Status200OK)]
+        public IActionResult GetMetricsFromAgentV2(
+            [FromBody] CpuMetricsRequest request)
+        {
+            CpuMetricsResponse response = _metricsAgentClient.GetCpuMetrics(new CpuMetricsRequest()
+            {
+                AgentId = request.AgentId,
+                FromTime = request.FromTime,
+                ToTime = request.ToTime
+            });
+            return Ok(response);
+        }
+
+
         /// <summary>
         /// Получение данных в диапазоне времени
         /// </summary>

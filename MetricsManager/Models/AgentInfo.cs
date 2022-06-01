@@ -15,7 +15,7 @@ namespace MetricsManager.Models
         /// <summary>
         /// Url адрес сервиса
         /// </summary>
-        public Uri AgentAddress { get; set; }
+        public String AgentAddress { get; set; }
         /// <summary>
         /// Активность
         /// </summary>
